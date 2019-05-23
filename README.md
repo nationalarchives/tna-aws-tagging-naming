@@ -48,7 +48,7 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 | tna:Role*   | String  | Predifined roles   | public, private, web, api or db  |
 | tna:Environment*   | String  | Predifined set of environments   | dev, test or live  |
 | tna:CostCentre*   | integer | Cost centre code   | 63  |
-| tna:Owner   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
+| tna:Owner   | String  | email or team name  | Automate and modernise  |
 | tna:CreatedBy   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
 | Terraform*   | Boolean  | Terraform created   | true or false  |
 
