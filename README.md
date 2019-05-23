@@ -4,7 +4,7 @@ This outlines suitable naming conventions for tagging and naming AWS resources i
 
 | Key name | Data type | Definition | Example |
 | ------------- | ------------- | ------------- | ------------- |
-| Name* | Dash delimited data based on a collection of tags | Name of resource  | See format below  |
+| Name* | Dash delimited data based on a collection of tags | Name of resource  | [See format below](#resource-naming-default-pattern-format)  |
 | Terraform*   | Boolean  | If created by Terraform  | true or false  |
 
 ### Resource naming default pattern format
