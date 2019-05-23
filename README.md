@@ -36,10 +36,15 @@ Resource type and/or description. eg `sg-public-access` for security groups in t
 
 ## Tagging formats
 
-| Key name | Data type | Definition | Example |
+| Key name | Data type | Definition | Examples |
 | ------------- | ------------- | ------------- | ------------- |
-| Name* | Dash delimited data based on a collection of tags | Name of resource  | [See format below](#resource-naming-default-pattern-format)  |
-| Terraform*   | Boolean  | If created by Terraform  | true or false  |
+| Name* | Dash delimited data based on a collection of tags | Name of resource  | [See format above](#resource-naming-default-pattern-format)  |
+| tna:Service*   | String  | Predifined set of organisation services or products   | disco, blog or cdn  |
+| tna:ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
+| tna:Environment*   | String  | Predifined set of environments   | dev, test or live  |
+| tna:CostCentre*   | integer | Cost centre code   | dev, test or live  |
+| Terraform*   | Boolean  | Terraform created   | true or false  |
+
 
 
 
