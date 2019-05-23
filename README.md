@@ -4,7 +4,7 @@ This outlines suitable naming conventions for tagging and naming AWS resources i
 
 | Key name | Data type | Definition | Example |
 | ------------- | ------------- | ------------- | ------------- |
-| Name* | Dash delimited data based on a collection of tags | Name of resource  | ?  |
+| Name* | Dash delimited data based on a collection of tags | Name of resource  | See format below  |
 | Terraform*   | Boolean  | If created by Terraform  | true or false  |
 
 ### Resource naming default pattern format
@@ -29,5 +29,5 @@ Defines the environment. eg `dev` for Development, `test` for Test, `live` for L
 
 #### ResourceDescription
 
-Resource description (desciption optional). eg `sg-public-access` for security groups in the public subnet
+Resource type and/or description. eg `sg-public-access` for security groups in the public subnet
 
