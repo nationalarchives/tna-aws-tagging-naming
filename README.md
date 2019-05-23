@@ -42,7 +42,7 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 
 | Key name | Data type | Definition | Examples |
 | ------------- | ------------- | ------------- | ------------- |
-| Name* | Dash delimited data based on a collection of tags | Name of resource  | [See format above](#resource-naming-default-pattern-format)  |
+| Name* | String | Name of resource  | [See format above](#resource-naming-default-pattern-format)  |
 | tna:Service*   | String  | Predifined set of organisation services or products   | disco, blog or cdn  |
 | tna:ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
 | tna:Role*   | String  | Predifined roles   | public, private, web, api or db  |
