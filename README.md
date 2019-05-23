@@ -29,7 +29,9 @@ Resource type and/or description. eg `sg-public-access` for security groups in t
 ### Resource naming examples
 
 `disco-netcore-live-api` - Discovery .NET core API ec2 instance on Live
+
 `wp-blog-amp-test-efs-storage` - Blog WordPress EFS storage on Test
+
 `win-jenkins-inter-sg-ip-access` - Windows Jenkins security group with defined IP access on Intersite
 
 ## Tagging formats
