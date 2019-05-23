@@ -24,7 +24,11 @@ Defines the environment. eg `dev` for Development, `test` for Test, `live` for L
 
 #### ResourceDescription
 
-Resource type and/or description. eg `sg-public-access` for security groups in the public subnet
+Resource type and/or description. eg `sg` for security groups, `lb` for application load balancer
+
+#### Role (optional)
+
+Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `prvt` for an application ec2 in a private subnet
 
 ### Resource naming examples
 
