@@ -4,7 +4,7 @@ This outlines suitable naming conventions for tagging and naming AWS resources i
 
 ## Resource naming default pattern format
 
-`Prefix-ServiceCode-ApplicationTypeCode-EnvironmentCode-ResourceDescription`
+`Prefix-ServiceCode-ApplicationTypeCode-EnvironmentCode-Resource-Role`
 
 #### Prefix (optional)
 
@@ -22,19 +22,19 @@ Defines the application type. eg `netcore` for .NET core, `amp` for Apache, MySQ
 
 Defines the environment. eg `dev` for Development, `test` for Test, `live` for Live
 
-#### ResourceDescription
+#### Resource
 
 Resource type and/or description. eg `sg` for security groups, `lb` for application load balancer
 
-#### Role (optional)
+#### Role (optional, but mandatory for ec2 instances)
 
-Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `prvt` for an application ec2 in a private subnet
+Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `prvt` for an application ec2 in a private subnet, `db` for a RDS instance
 
 ### Resource naming examples
 
-`disco-netcore-live-api` (Discovery .NET core API ec2 instance on Live)
+`disco-netcore-live-ec2-api` (Discovery .NET core API ec2 instance on Live)
 
-`wp-blog-amp-test-efs-storage` (Blog WordPress EFS storage on Test)
+`wp-blog-amp-test-efs-storage` (Blog WordPress (Apache, MySQL and PHP) EFS storage on Test)
 
 `win-jenkins-inter-sg-ip-access` (Windows Jenkins security group with defined IP access on Intersite)
 
