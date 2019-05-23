@@ -28,7 +28,7 @@ Defines the environment. eg `dev` for Development, `test` for Test, `live` for L
 
 Resource type and/or description. eg `sg` for security groups, `lb` for application load balancer
 
-#### Role (optional, but mandatory for ec2 instances)
+#### Role (optional, but mandatory for ec2 instances, load balancers and RDS)
 
 Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `prvt` for an application ec2 in a private subnet, `db` for a RDS instance
 
@@ -56,7 +56,8 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 
 ## Tag style rules
 
-* Tag key names should use CamelCase 
+* Tag key names should use CamelCase
+* Use namespaces for tag key names specific to TNA or TNA departnemnt, eg "tna:Service" or "tnaLegal:ApplicationType".
 * Tag values are case-sensitive and should not use the semi-colon (";"), equal sign ("="), or pipe ("|") characters as these are used as delimiters in compound values.
 * Compound tag value key names should use CamelCase followed by an equal sign ("=") such as KeyName1=value1|value2|value3;KeyName2=value1|value2|value3
 
@@ -64,5 +65,3 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 
 * [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
 * [A guide to tagging resources in AWS](https://medium.com/stax-blog/a-guide-to-tagging-resources-in-aws-8f4311afeb46)
-
-
