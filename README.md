@@ -28,11 +28,11 @@ Resource type and/or description. eg `sg-public-access` for security groups in t
 
 ### Resource naming examples
 
-`disco-netcore-live-api` - Discovery .NET core API ec2 instance on Live
+`disco-netcore-live-api` (Discovery .NET core API ec2 instance on Live)
 
-`wp-blog-amp-test-efs-storage` - Blog WordPress EFS storage on Test
+`wp-blog-amp-test-efs-storage` (Blog WordPress EFS storage on Test)
 
-`win-jenkins-inter-sg-ip-access` - Windows Jenkins security group with defined IP access on Intersite
+`win-jenkins-inter-sg-ip-access` (Windows Jenkins security group with defined IP access on Intersite)
 
 ## Tagging formats
 
@@ -41,8 +41,11 @@ Resource type and/or description. eg `sg-public-access` for security groups in t
 | Name* | Dash delimited data based on a collection of tags | Name of resource  | [See format above](#resource-naming-default-pattern-format)  |
 | tna:Service*   | String  | Predifined set of organisation services or products   | disco, blog or cdn  |
 | tna:ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
+| tna:Role*   | String  | Predifined roles   | public, private, web, api or db  |
 | tna:Environment*   | String  | Predifined set of environments   | dev, test or live  |
 | tna:CostCentre*   | integer | Cost centre code   | 63  |
+| tna:Owner   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
+| tna:CreatedBy   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
 | Terraform*   | Boolean  | Terraform created   | true or false  |
 
 
