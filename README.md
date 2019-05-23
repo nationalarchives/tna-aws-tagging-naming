@@ -42,7 +42,7 @@ Resource type and/or description. eg `sg-public-access` for security groups in t
 | tna:Service*   | String  | Predifined set of organisation services or products   | disco, blog or cdn  |
 | tna:ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
 | tna:Environment*   | String  | Predifined set of environments   | dev, test or live  |
-| tna:CostCentre*   | integer | Cost centre code   | dev, test or live  |
+| tna:CostCentre*   | integer | Cost centre code   | 63  |
 | Terraform*   | Boolean  | Terraform created   | true or false  |
 
 
