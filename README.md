@@ -4,6 +4,8 @@ This outlines suitable naming conventions for tagging and naming AWS resources i
 
 ## Resource naming default pattern format
 
+Dash delimited data based on a collection of tags
+
 `Prefix-ServiceCode-ApplicationTypeCode-EnvironmentCode-Resource-Role`
 
 #### Prefix (optional)
