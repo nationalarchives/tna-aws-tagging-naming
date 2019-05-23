@@ -52,6 +52,10 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 | tna:CreatedBy   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
 | Terraform*   | Boolean  | Terraform created   | true or false  |
 
+## References
 
+* [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
+
+* [A guide to tagging resources in AWS](https://medium.com/stax-blog/a-guide-to-tagging-resources-in-aws-8f4311afeb46)
 
 
