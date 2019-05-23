@@ -54,6 +54,12 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 | tna:CreatedBy   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
 | Terraform*   | Boolean  | Terraform created   | true or false  |
 
+## Tag style rules
+
+* Tag key names should use CamelCase 
+* Tag values are case-sensitive and should not use the semi-colon (";"), equal sign ("="), or pipe ("|") characters as these are used as delimiters in compound values.
+* Compound tag value key names should use CamelCase followed by an equal sign ("=") such as KeyName1=value1|value2|value3;KeyName2=value1|value2|value3
+
 ## References
 
 * [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
