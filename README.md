@@ -74,7 +74,7 @@ resource "aws_instance" "api" {
     ApplicationType = "netcore"
     Role = "api"
     Environment = "test"
-    CostCentre = "63"
+    CostCentre = 63
     Owner = "auto-modernise"
     CreatedBy = "auto.modernise@nationalarchives.gov.uk"
     Terraform = true
@@ -97,7 +97,7 @@ variable "env" {
 }
 
 variable "costcentre" {
-  default = "63"
+  default = 63
 }
 
 variable "owner" {
@@ -118,7 +118,7 @@ resource "aws_instance" "web" {
     ApplicationType = "${var.app}"
     Role = "web"
     Environment = "${var.env}"
-    CostCentre = "${var.costcentre}"
+    CostCentre = ${var.costcentre}
     Owner = "${var.owner}"
     CreatedBy = "${var.createdby}"
     Terraform = true
@@ -135,7 +135,7 @@ resource "aws_instance" "api" {
     ApplicationType = "${var.app}"
     Role = "api"
     Environment = "${var.env}"
-    CostCentre = "${var.costcentre}"
+    CostCentre = ${var.costcentre}
     Owner = "${var.owner}"
     CreatedBy = "${var.createdby}"
     Terraform = true
