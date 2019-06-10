@@ -47,7 +47,7 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 | Name* | String | Name of resource  | [See format above](#resource-naming-default-pattern-format)  |
 | Service*   | String  | Predifined set of organisation services or products   | disco, blog or cdn  |
 | ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
-| Role*   | String  | Predifined roles   | pub, prvt, web, api or db  |
+| ApplicationRole*   | String  | Predifined roles   | pub, prvt, web, api or db  |
 | Environment*   | String  | Predifined set of environments   | dev, test or live  |
 | CostCentre*   | integer | Cost centre code   | 63  |
 | Owner   | String  | email or team name  | Automate and modernise  |
@@ -72,7 +72,7 @@ resource "aws_instance" "api" {
     Name = "commandpapers-netcore-test-ec2-api"
     Service = "commandpapers"
     ApplicationType = "netcore"
-    Role = "api"
+    ApplicationRole = "api"
     Environment = "test"
     CostCentre = 63
     Owner = "auto-modernise"
@@ -116,7 +116,7 @@ resource "aws_instance" "web" {
     Name = "${var.service}-${var.app}-${var.env}-ec2-web"
     Service = "${var.service}"
     ApplicationType = "${var.app}"
-    Role = "web"
+    ApplicationRole = "web"
     Environment = "${var.env}"
     CostCentre = ${var.costcentre}
     Owner = "${var.owner}"
@@ -133,7 +133,7 @@ resource "aws_instance" "api" {
     Name = "${var.service}-${var.app}-${var.env}-ec2-api"
     Service = "${var.service}"
     ApplicationType = "${var.app}"
-    Role = "api"
+    ApplicationRole = "api"
     Environment = "${var.env}"
     CostCentre = ${var.costcentre}
     Owner = "${var.owner}"
