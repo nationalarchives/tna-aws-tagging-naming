@@ -45,13 +45,13 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 | Key name | Data type | Definition | Examples |
 | ------------- | ------------- | ------------- | ------------- |
 | Name* | String | Name of resource  | [See format above](#resource-naming-default-pattern-format)  |
-| tna:Service*   | String  | Predifined set of organisation services or products   | disco, blog or cdn  |
-| tna:ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
-| tna:Role*   | String  | Predifined roles   | pub, prvt, web, api or db  |
-| tna:Environment*   | String  | Predifined set of environments   | dev, test or live  |
-| tna:CostCentre*   | integer | Cost centre code   | 63  |
-| tna:Owner   | String  | email or team name  | Automate and modernise  |
-| tna:CreatedBy   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
+| Service*   | String  | Predifined set of organisation services or products   | disco, blog or cdn  |
+| ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
+| Role*   | String  | Predifined roles   | pub, prvt, web, api or db  |
+| Environment*   | String  | Predifined set of environments   | dev, test or live  |
+| CostCentre*   | integer | Cost centre code   | 63  |
+| Owner   | String  | email or team name  | Automate and modernise  |
+| CreatedBy   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
 | Terraform*   | Boolean  | Terraform created   | true or false  |
 
 ## Tag style rules
@@ -60,6 +60,28 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 * Use namespaces for tag key names specific to TNA or TNA departnemnt, eg "tna:Service" or "tnaLegal:ApplicationType".
 * Tag values are case-sensitive and should not use the semi-colon (";"), equal sign ("="), or pipe ("|") characters as these are used as delimiters in compound values.
 * Compound tag value key names should use CamelCase followed by an equal sign ("=") such as KeyName1=value1|value2|value3;KeyName2=value1|value2|value3
+
+## Terraform
+
+Terraform example
+```
+resource "aws_instance" "api" {
+  ami           = "${data.aws_ami.ubuntu.id}"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "commandpapers-netcore-test-ec2-api"
+    Service = "commandpapers"
+    ApplicationType = "netcore"
+    Role = "api"
+    Environment = "test"
+    CostCentre = "63"
+    Owner = "auto-modernise"
+    CreatedBy = "auto.modernise@nationalarchives.gov.uk"
+    Terraform = true
+  }
+}
+```
 
 ## References
 
