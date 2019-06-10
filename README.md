@@ -57,7 +57,6 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 ## Tag style rules
 
 * Tag key names should use CamelCase
-* Use namespaces for tag key names specific to TNA or TNA departnemnt, eg "tna:Service" or "tnaLegal:ApplicationType".
 * Tag values are case-sensitive and should not use the semi-colon (";"), equal sign ("="), or pipe ("|") characters as these are used as delimiters in compound values.
 * Compound tag value key names should use CamelCase followed by an equal sign ("=") such as KeyName1=value1|value2|value3;KeyName2=value1|value2|value3
 
