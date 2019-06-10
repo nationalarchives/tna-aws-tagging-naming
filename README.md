@@ -83,6 +83,54 @@ resource "aws_instance" "api" {
 }
 ```
 
+Terraform variable example
+```
+variable "service" {
+  default = "commandpapers"
+}
+
+variable "app" {
+  default = "netcore"
+}
+
+variable "role" {
+  default = "api"
+}
+
+variable "env" {
+  default = "test"
+}
+
+variable "costcentre" {
+  default = "63"
+}
+
+variable "owner" {
+  default = "auto-modernise"
+}
+
+variable "createdby" {
+  default = "auto.modernise@nationalarchives.gov.uk"
+}
+
+resource "aws_instance" "api" {
+  ami           = "${data.aws_ami.ubuntu.id}"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "${var.service}-${var.app}-${var.env}-ec2-${var.role}"
+    Service = "${var.service}"
+    ApplicationType = "${var.app}"
+    Role = "${var.role}"
+    Environment = "${var.env}"
+    CostCentre = "${var.costcentre}"
+    Owner = "${var.owner}"
+    CreatedBy = "${var.createdby}"
+    Terraform = true
+  }
+}
+```
+
 ## References
 
 * [AWS Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
