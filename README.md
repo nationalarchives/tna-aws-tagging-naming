@@ -92,10 +92,6 @@ variable "app" {
   default = "netcore"
 }
 
-variable "role" {
-  default = "api"
-}
-
 variable "env" {
   default = "test"
 }
@@ -112,15 +108,32 @@ variable "createdby" {
   default = "auto.modernise@nationalarchives.gov.uk"
 }
 
+resource "aws_instance" "web" {
+  ami           = "${data.aws_ami.ubuntu.id}"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "${var.service}-${var.app}-${var.env}-ec2-web"
+    Service = "${var.service}"
+    ApplicationType = "${var.app}"
+    Role = "web"
+    Environment = "${var.env}"
+    CostCentre = "${var.costcentre}"
+    Owner = "${var.owner}"
+    CreatedBy = "${var.createdby}"
+    Terraform = true
+  }
+}
+
 resource "aws_instance" "api" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
 
   tags = {
-    Name = "${var.service}-${var.app}-${var.env}-ec2-${var.role}"
+    Name = "${var.service}-${var.app}-${var.env}-ec2-api"
     Service = "${var.service}"
     ApplicationType = "${var.app}"
-    Role = "${var.role}"
+    Role = "api"
     Environment = "${var.env}"
     CostCentre = "${var.costcentre}"
     Owner = "${var.owner}"
