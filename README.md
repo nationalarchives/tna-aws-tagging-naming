@@ -85,8 +85,8 @@ resource "aws_instance" "api" {
 
 # RDS instance
 resource "aws_db_instance" "master" {
-  name                 = "commandpapers-netcore-test-db-ma"
-  identifier           = "commandpapers-netcore-test-db-ma"
+  name                 = "commandpapers-mysql-test-db-ma"
+  identifier           = "commandpapers-mysql-test-db-ma"
   allocated_storage    = 20
   storage_type         = "gp2"
   engine               = "mysql"
@@ -98,7 +98,7 @@ resource "aws_db_instance" "master" {
   
   tags = {
     Service         = "commandpapers"
-    ApplicationType = "netcore"
+    ApplicationType = "mysql"
     Role            = "db"
     Environment     = "test"
     CostCentre      = 63
