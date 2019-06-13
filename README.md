@@ -28,9 +28,9 @@ Defines the environment. eg `dev` for Development, `test` for Test, `live` for L
 
 Resource type and/or description. eg `sg` for security groups, `lb` for application load balancer
 
-#### Role (optional, but mandatory for ec2 instances, load balancers and RDS)
+#### Role (optional, but mandatory for ec2 instances, load balancers, security groups and RDS)
 
-Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `prvt` for an application ec2 in a private subnet, `db` for a RDS instance
+Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `prvt` for an application ec2 in a private subnet, `ma` for a master RDS instance `rr` for a read replica RDS instance
 
 ### Resource naming examples
 
@@ -47,7 +47,7 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 | Name* | String | Name of resource  | [See format above](#resource-naming-default-pattern-format)  |
 | Service*   | String  | Predifined set of organisation services or products   | disco, blog or cdn  |
 | ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
-| ApplicationRole*   | String  | Predifined roles   | pub, prvt, web, api or db  |
+| Role*   | String  | Predifined roles   | pub, prvt, web, api or db  |
 | Environment*   | String  | Predifined set of environments   | dev, test or live  |
 | CostCentre*   | integer | Cost centre code   | 63  |
 | Owner   | String  | email or team name  | Automate and modernise  |
@@ -65,20 +65,64 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 
 Terraform example
 ```
+# EC2 instance
 resource "aws_instance" "api" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
 
   tags = {
-    Name = "commandpapers-netcore-test-ec2-api"
-    Service = "commandpapers"
+    Name            = "commandpapers-netcore-test-ec2-api"
+    Service         = "commandpapers"
     ApplicationType = "netcore"
-    ApplicationRole = "api"
-    Environment = "test"
-    CostCentre = 63
-    Owner = "auto-modernise"
-    CreatedBy = "auto.modernise@nationalarchives.gov.uk"
-    Terraform = true
+    Role            = "api"
+    Environment     = "test"
+    CostCentre      = 63
+    Owner           = "auto-modernise"
+    CreatedBy       = "auto.modernise@nationalarchives.gov.uk"
+    Terraform       = true
+  }
+}
+
+# RDS instance
+resource "aws_db_instance" "master" {
+  name                 = "commandpapers-netcore-test-db-ma"
+  identifier           = "commandpapers-netcore-test-db-ma"
+  allocated_storage    = 20
+  storage_type         = "gp2"
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t2.micro"
+  username             = "foo"
+  password             = "foobarbaz"
+  parameter_group_name = "default.mysql5.7"
+  
+  tags = {
+    Service         = "commandpapers"
+    ApplicationType = "netcore"
+    Role            = "db"
+    Environment     = "test"
+    CostCentre      = 63
+    Owner           = "auto-modernise"
+    CreatedBy       = "auto.modernise@nationalarchives.gov.uk"
+    Terraform       = true
+  }
+}
+
+# Security group
+resource "aws_security_group" "public_access" {
+  name = "commandpapers-netcore-test-sg-pub"
+  description = "Security Group HTTP and HTTPS public access"
+  vpc_id = "${data.terraform_remote_state.env_vpc.vpc}"
+
+  tags = {
+    Service         = "commandpapers"
+    ApplicationType = "netcore"
+    Role            = "pub"
+    Environment     = "test"
+    CostCentre      = 63
+    Owner           = "auto-modernise"
+    CreatedBy       = "auto.modernise@nationalarchives.gov.uk"
+    Terraform       = true
   }
 }
 ```
@@ -117,7 +161,7 @@ resource "aws_instance" "web" {
     Name = "${var.service}-${var.app}-${var.env}-ec2-web"
     Service = "${var.service}"
     ApplicationType = "${var.app}"
-    ApplicationRole = "web"
+    Role = "web"
     Environment = "${var.env}"
     CostCentre = ${var.costcentre}
     Owner = "${var.owner}"
@@ -134,7 +178,7 @@ resource "aws_instance" "api" {
     Name = "${var.service}-${var.app}-${var.env}-ec2-api"
     Service = "${var.service}"
     ApplicationType = "${var.app}"
-    ApplicationRole = "api"
+    Role = "api"
     Environment = "${var.env}"
     CostCentre = ${var.costcentre}
     Owner = "${var.owner}"
