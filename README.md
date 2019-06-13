@@ -99,7 +99,7 @@ resource "aws_db_instance" "master" {
   tags = {
     Service         = "commandpapers"
     ApplicationType = "mysql"
-    Role            = "db"
+    Role            = "ma"
     Environment     = "test"
     CostCentre      = 63
     Owner           = "auto-modernise"
