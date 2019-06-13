@@ -111,7 +111,7 @@ resource "aws_db_instance" "master" {
 # Security group
 resource "aws_security_group" "public_access" {
   name = "commandpapers-netcore-test-sg-pub"
-  description = "Security Group HTTP and HTTPS public access"
+  description = "HTTP and HTTPS public access"
   vpc_id = "${data.terraform_remote_state.env_vpc.vpc}"
 
   tags = {
