@@ -128,7 +128,7 @@ resource "aws_security_group" "public_access" {
 
 # IAM role
 resource "aws_iam_role" "commandpapers_s3_access" {
-  name               = "commandpapers-s3-access-role"
+  name               = "commandpapers-test-s3-access-role"
   assume_role_policy = <<EOF
 {
     "Version": "2012-10-17",
@@ -148,7 +148,7 @@ EOF
 
 # IAM policy
 resource "aws_iam_policy" "commandpapers_s3_access" {
-  name        = "commandpapers-s3-access-policy"
+  name        = "commandpapers-test-s3-access-policy"
   description = "s3 access"
 
   policy = <<EOF
@@ -172,7 +172,7 @@ EOF
 ```
 
 Terraform variable example
-```
+```bash
 variable "service" {
   default = "commandpapers"
 }
