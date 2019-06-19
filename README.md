@@ -127,8 +127,8 @@ resource "aws_security_group" "public_access" {
 }
 
 # IAM role
-resource "aws_iam_role" "commandpapers_s3_access" {
-  name               = "commandpapers-test-s3-access-role"
+resource "aws_iam_role" "commandpapers_ec2" {
+  name               = "commandpapers-test-ec2-role"
   
   assume_role_policy = <<EOF
 {
