@@ -64,7 +64,7 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 ## Terraform
 
 Terraform example
-```
+```bash
 # EC2 instance
 resource "aws_instance" "api" {
   ami           = "${data.aws_ami.ubuntu.id}"
@@ -124,6 +124,50 @@ resource "aws_security_group" "public_access" {
     CreatedBy       = "auto.modernise@nationalarchives.gov.uk"
     Terraform       = true
   }
+}
+
+# IAM role
+resource "aws_iam_role" "commandpapers_s3_access" {
+  name               = "commandpapers-s3-access-role"
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "sts:AssumeRole",
+            "Principal": {
+               "Service": "ec2.amazonaws.com"
+            },
+            "Effect": "Allow",
+            "Sid": ""
+        }
+    ]
+}
+EOF
+}
+
+# IAM policy
+resource "aws_iam_policy" "commandpapers_s3_access" {
+  name        = "commandpapers-s3-access-policy"
+  description = "s3 access"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject"
+      ],
+      "Resource": [
+         "arn:aws:s3:::s3-bucket/*"
+      ]
+    }
+  ]
+}
+EOF
 }
 ```
 
