@@ -34,11 +34,20 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 
 ### Resource naming examples
 
+#### ec2 instance
 `disco-netcore-live-ec2-api` (Discovery .NET core API ec2 instance on Live)
 
+#### EFS
 `wp-blog-amp-test-efs-storage` (Blog WordPress (Apache, MySQL and PHP) EFS storage on Test)
 
+#### Security group
 `win-jenkins-inter-sg-ip-access` (Windows Jenkins security group with defined IP access on Intersite)
+
+#### IAM role
+`disco-web-test-ec2-role` (IAM role assumed by Discovery web app ec2 instance on Test)
+
+#### IAM ploicy
+`disco-downloads-s3-access-policy` (IAM policy for accessing the downloads s3 bucket for Discovery)
 
 ## Tagging formats
 
@@ -128,7 +137,7 @@ resource "aws_security_group" "public_access" {
 
 # IAM role
 resource "aws_iam_role" "commandpapers_ec2" {
-  name               = "commandpapers-test-ec2-role"
+  name               = "commandpapers-web-test-ec2-role"
   
   assume_role_policy = <<EOF
 {
@@ -149,8 +158,8 @@ EOF
 
 # IAM policy
 resource "aws_iam_policy" "commandpapers_s3_access" {
-  name        = "commandpapers-test-s3-access-policy"
-  description = "s3 access"
+  name        = "commandpapers-downloads-s3-access-policy"
+  description = "Downloads s3 access"
   role = "${aws_iam_role.commandpapers_s3_access.id}"
 
   policy = <<EOF
@@ -164,7 +173,7 @@ resource "aws_iam_policy" "commandpapers_s3_access" {
         "s3:GetObject"
       ],
       "Resource": [
-         "arn:aws:s3:::s3-bucket/*"
+         "arn:aws:s3:::downloads-s3-bucket/*"
       ]
     }
   ]
