@@ -58,8 +58,8 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 | ApplicationType*   | String  | The application type   | netcore, amp or nodejs  |
 | Role*   | String  | Predifined roles   | pub, prvt, web, api or db  |
 | Environment*   | String  | Predifined set of environments   | dev, test or live  |
-| CostCentre*   | integer | Cost centre code   | 63  |
-| Owner   | String  | email or team name  | Automate and modernise  |
+| CostCentre*   | integer | Cost centre code   | 53  |
+| Owner   | String  | email or team name  | automate and modernise  |
 | CreatedBy   | String  | email   | auto.modernise@nationalarchives.gov.uk  |
 | Terraform*   | Boolean  | Terraform created   | true or false  |
 
@@ -68,7 +68,7 @@ Predifined roles. eg `web` or `pub` for resources in a public subnet, `api` or `
 * Tag key names should use Pascal case. eg, ApplicationType
 * Tag values should use lower case with dashes. eg, disco-netcore-live-ec2-api
 * Tag values are case-sensitive and should not use the semi-colon (";"), equal sign ("="), or pipe ("|") characters as these are used as delimiters in compound values.
-* Compound tag value key names should use CamelCase followed by an equal sign ("=") such as KeyName1=value1|value2|value3;KeyName2=value1|value2|value3
+* Compound tag value key names should use Pascal case followed by an equal sign ("=") such as KeyName1=value1|value2|value3;KeyName2=value1|value2|value3
 
 ## Terraform
 
