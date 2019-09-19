@@ -85,7 +85,7 @@ resource "aws_instance" "api" {
     ApplicationType = "netcore"
     Role            = "api"
     Environment     = "test"
-    CostCentre      = 63
+    CostCentre      = 00
     Owner           = "auto-modernise"
     CreatedBy       = "auto.modernise@nationalarchives.gov.uk"
     Terraform       = true
@@ -110,7 +110,7 @@ resource "aws_db_instance" "master" {
     ApplicationType = "mysql"
     Role            = "ma"
     Environment     = "test"
-    CostCentre      = 63
+    CostCentre      = 00
     Owner           = "auto-modernise"
     CreatedBy       = "auto.modernise@nationalarchives.gov.uk"
     Terraform       = true
@@ -128,7 +128,7 @@ resource "aws_security_group" "public_access" {
     ApplicationType = "netcore"
     Role            = "pub"
     Environment     = "test"
-    CostCentre      = 63
+    CostCentre      = 00
     Owner           = "auto-modernise"
     CreatedBy       = "auto.modernise@nationalarchives.gov.uk"
     Terraform       = true
@@ -197,7 +197,7 @@ variable "env" {
 }
 
 variable "costcentre" {
-  default = 63
+  default = 00
 }
 
 variable "owner" {
